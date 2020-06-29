@@ -1,0 +1,235 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(vroom)
+library(dplyr)
+#If you get an error here, you may need to decompress the results.
+d.raw <- vroom("AggregateResults.csv")
+d.with_exp_id <- d.raw %>% filter (uni_type == "SMALL") %>% select(everything(), -ends_with("min"), -ends_with("max"), -46, -starts_with("uni"), -starts_with("NumQuarantinedInfectiousThroughPolicy"))
+d <- d.with_exp_id %>% select(everything(), -starts_with("Exp"))
+d[sapply(d, is.character)] <- lapply(d[sapply(d, is.character)], as.factor)
+d$compound_metric <- d$NumNeverInfected + d$RecoveredCountTotal - d$Death_Count - d$TotalReinfected
+```
+
+
+```{r}
+summary(d)
+```
+
+```{r, fig.width = 12, fig.height = 12}
+library(corrplot)
+d.integer <- d %>% select(everything(), -starts_with("Exp"), -starts_with("uni"))
+d.integer[sapply(d.integer, is.factor)] <- lapply(d.integer[sapply(d.integer, is.factor)], as.integer)
+M <- cor(d.integer)
+res95conf <- cor.mtest(d.integer[,], conf.leve = 0.95)
+cex.before <- par("cex")
+par(cex = 0.7)
+corrplot(M, method = "circle", order = "hclust", addrect = 10, p.mat = res95conf$p, sig.level = .05, tl.cex = 1/par("cex"),
+    cl.cex = 1/par("cex"))
+par(cex = cex.before)
+```
+```{r}
+# Get inputs with one output
+d.inputs <- d[,1:18]
+d.infection_count <- cbind(d.inputs, d[,"InfectionCount"])
+d.never_infected <- cbind(d.inputs, d[,"NumNeverInfected"])
+d.compound <- cbind(d.inputs, d[,"compound_metric"])
+
+# Fix regsubsets plot for better formatting
+plot.regsubsets<-function(x,labels=obj$xnames,main=NULL,
+                          scale=c("bic","Cp","adjr2","r2"),
+                          col=gray(seq(0,0.9,length=10)),mar = c(7,5,6,3)+0.1, ...){
+    obj<-x
+    lsum<-summary(obj)
+    par(mar=mar)
+    nmodels<-length(lsum$rsq)
+    np<-obj$np
+    propscale<-FALSE
+    sscale<-pmatch(scale[1],c("bic","Cp","adjr2","r2"),nomatch=0)
+    if (sscale==0)
+        stop(paste("Unrecognised scale=",scale))
+    if (propscale)
+        stop(paste("Proportional scaling only for probabilities"))
+
+    yscale<-switch(sscale,lsum$bic,lsum$cp,lsum$adjr2,lsum$rsq)
+    up<-switch(sscale,-1,-1,1,1)
+
+    index<-order(yscale*up)
+
+    colorscale<- switch(sscale,
+                        yscale,yscale,
+                        -log(pmax(yscale,0.0001)),-log(pmax(yscale,0.0001)))
+
+    image(z=t(ifelse(lsum$which[index,],
+          colorscale[index],NA+max(colorscale)*1.5)),
+          xaxt="n",yaxt="n",x=(1:np),y=1:nmodels,xlab="",ylab=scale[1],col=col)
+
+    laspar<-par("las")
+    on.exit(par(las=laspar))
+    par(las=2)
+    axis(1,at=1:np,labels=labels)
+    axis(2,at=1:nmodels,labels=signif(yscale[index],2))
+
+    if (!is.null(main))
+        title(main=main)
+    box()
+    invisible(NULL)
+}
+```
+
+
+```{r, figure.height = 15, fig.width=13}
+#Regsubsets for InfectiounCount
+library(leaps)
+regsubsets.out<-regsubsets(InfectionCount~.,
+                       data=d.infection_count,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = 20,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive", really.big=T)
+
+summary.out <- summary(regsubsets.out)
+#regsubsets.out.summary <- as_tibble(summary(regsubsets.out)$which)
+#colSums(regsubsets.out.summary)
+## Adjusted R2
+#subsets(regsubsets.out, statistic="cp", legend = FALSE, min.size = 5, main = "Mallow Cp")
+plot(regsubsets.out, scale = "adjr2", main = "", col=heat.colors(6), mar = c(7,5,6,3)+7)
+```
+
+
+
+```{r, fig.height=8, fig.width=9}
+library(leaps)
+library(dplyr)
+
+d.never_infected.no_tracking <- d.never_infected
+
+#Regsubsets for Number never infected
+regsubsets.out<-regsubsets(NumNeverInfected~.,
+                       data=d.never_infected.no_tracking,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = 9,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive", really.big=T)
+
+summary.out <- summary(regsubsets.out)
+#regsubsets.out.summary <- as_tibble(summary(regsubsets.out)$which)
+#colSums(regsubsets.out.summary)
+## Adjusted R2
+#subsets(regsubsets.out, statistic="cp", legend = FALSE, min.size = 5, main = "Mallow Cp")
+plot(regsubsets.out, scale = "adjr2", main = "AdjR2 account for number never infected with central tracking", col=heat.colors(6), mar = c(28,3,2,1))
+```
+
+The three factors which account of 86% of the variance are student_facing_test_boost - boosting the likelihood of student-facing staff getting tested - central tracking (forcing compliance with quarantine), and social distancing. ct_compliance - the likelihood of reporting symptoms to a contact tracing body, and test_compliance - the likelihood of complying with being tested, also account for some variance, but all otehr factors do not account for any more variance than these parameters already mentioned. Namely, the additon of the hybrid class model, traced_compliance (likelihood to quarantine based on making contact), and quarantine_compliance all together only accounts for 1% more variance. All other parameters, including closing fitness centers and cacnelling student events, do not account for any more variance, indicating that they do not signficantly effect the number of people never infected.
+
+```{r, fig.height=8, fig.width=9}
+library(leaps)
+library(dplyr)
+
+d.never_infected.no_tracking <- d.never_infected %>% filter(central_tracking=="YES") %>% select(everything(), -traced_compliance, -quarantine_compliance)
+
+regsubsets.out<-regsubsets(NumNeverInfected~.,
+                       data=d.never_infected.no_tracking,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = 5,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive", really.big=T)
+
+summary.out <- summary(regsubsets.out)
+#regsubsets.out.summary <- as_tibble(summary(regsubsets.out)$which)
+#colSums(regsubsets.out.summary)
+## Adjusted R2
+#subsets(regsubsets.out, statistic="cp", legend = FALSE, min.size = 5, main = "Mallow Cp")
+plot(regsubsets.out, scale = "adjr2", main = "AdjR2 account for number never infected with central tracking", col=heat.colors(6), mar = c(28,3,2,1))
+```
+
+Since central tracking affects other parameters, we can look at the parameters which account for variance with and without central tracking enabled. When central tracking is enabled, compliance for quarantining and for isolating when contact traced are overridden to 1. This is meant to represent when a university requires students to be tracked, and would penalize breaking quarantine or failing to isolate when told they have been contacted by someone who tested positive. These qualities are represented by traced_compliance and quarantine_compliance, so we omit these parameters when plotting with central tracking enabled.
+
+We can see that when central tracking is enabled, ct_history (traceback duration), social distancing compliance, test compliance, and boosting testing of student facing staff members accounts for 90% of the variance in the number never infected at simulation end. While the hybrid class model can account for a bit more varaince, no other combination of variables accounted for more than 91% of the variance (not shown in this plot).
+
+```{r, fig.height=8, fig.width=9}
+library(leaps)
+library(dplyr)
+
+d.never_infected.no_tracking <- d.never_infected %>% filter(central_tracking=="NO") %>% select(everything(), -central_tracking)
+
+regsubsets.out<-regsubsets(NumNeverInfected~.,
+                       data=d.never_infected.no_tracking,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = 6,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive", really.big=T)
+
+summary.out <- summary(regsubsets.out)
+#regsubsets.out.summary <- as_tibble(summary(regsubsets.out)$which)
+#colSums(regsubsets.out.summary)
+## Adjusted R2
+#subsets(regsubsets.out, statistic="cp", legend = FALSE, min.size = 5, main = "Mallow Cp")
+plot(regsubsets.out, scale = "adjr2", main = "AdjR2 account for number never infected without central tracking", col=heat.colors(6),  mar = c(28,3,2,1))
+```
+
+A universiy may opt not to do central tracking, for practical or privacy-protection purposes. When central tracking is disabled, we can see that social distancing compliance, boosting testing of staff with student-facing jobs, ct_compliance (likelihood to report symptoms to contact tracing body), test compliance, traced_compliance (compliance to isolate when traced), and quarantine_compliance account for 92% of the variance. Other parameters did not account for any more variance than 92%.
+
+```{r, figure.height = 15, fig.width=13}
+
+
+library(leaps)
+regsubsets.out<-regsubsets(compound_metric~.,
+                       data=d.compound,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = 20,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive", really.big=T)
+
+summary.out <- summary(regsubsets.out)
+#regsubsets.out.summary <- as_tibble(summary(regsubsets.out)$which)
+#colSums(regsubsets.out.summary)
+## Adjusted R2
+#subsets(regsubsets.out, statistic="cp", legend = FALSE, min.size = 5, main = "Mallow Cp")
+plot(regsubsets.out, scale = "adjr2", main = "", col=heat.colors(6), mar = c(7,5,6,3)+7)
+```
+
+```{r}
+library(ggplot2)
+ggplot(d, aes(x=hybrid_classes, y=NumNeverInfected)) +
+    geom_boxplot()
+```
+
+
+```{r}
+d.daily <- vroom("AggregateResultsDaily.csv")
+```
+
+```{r}
+d.daily$NInfectious <- as.numeric(d.daily$NInfectious)
+d.daily$NInfectedQuarantine <- as.numeric(d.daily$NInfectedQuarantine)
+```
+
+```{r}
+d.daily
+```
+
+
+```{r}
+daily <- d.daily %>% filter(uni_type=="SMALL") %>%
+    group_by(`Experiment id`) %>%
+    summarize(max_num_infected = max(NInfectious + NInfectedQuarantine)) %>%
+    inner_join(d.with_exp_id %>% select(`Experiment id`, hybrid_classes) %>% distinct())
+
+
+#setEPS()
+#postscript("HybridClassroomsNumNeverInfected.eps")
+ggplot(daily, aes(x=hybrid_classes, y=max_num_infected)) +
+    geom_boxplot()
+#dev.off()
+
+
+#setEPS()
+#postscript("HybridClassroomsMaxNumInfeted.eps")
+ggplot(d, aes(x=hybrid_classes, y=NumNeverInfected)) +
+    geom_boxplot()
+#dev.off()
+```
