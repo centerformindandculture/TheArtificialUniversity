@@ -2869,6 +2869,199 @@ initializeSchool();]]></StartupCode>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1593462044911</Id>
+					<Name><![CDATA[Propensity_To_Social_Distance_Min_Student]]></Name>
+					<X>-1120</X><Y>450</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.5]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1593462044909</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1593462044951</Id>
+					<Name><![CDATA[Propensity_To_SocialDistance_Max_Student]]></Name>
+					<X>-1120</X><Y>470</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1593462044949</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1593462044961</Id>
+					<Name><![CDATA[QSComplianceMin_Student]]></Name>
+					<X>-1120</X><Y>320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1593462044959</Id>
+							<Label><![CDATA[QSComplianceMin1]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1593462044968</Id>
+					<Name><![CDATA[QSComplianceMax_Student]]></Name>
+					<X>-1120</X><Y>340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1593462044966</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1593462044982</Id>
+					<Name><![CDATA[CTComplianceMin_Student]]></Name>
+					<X>-1120</X><Y>360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.5]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1593462044980</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1593462044998</Id>
+					<Name><![CDATA[CTComplianceMax_Student]]></Name>
+					<X>-1120</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1593462044996</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1593462045013</Id>
+					<Name><![CDATA[CTTracedComplianceMin_Student]]></Name>
+					<X>-1120</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.5]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1593462045011</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1593462045027</Id>
+					<Name><![CDATA[CTTracedComplianceMax_Student]]></Name>
+					<X>-1120</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1593462045025</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1589911236013</Id>
 					<Name><![CDATA[classes]]></Name>
@@ -8681,7 +8874,6 @@ Reset_Will_Quarantine();
 //if (get_Main().Policy_Social_Distance && randomTrue(Trust_in_Authority))
 //{
 Will_Social_Distance = true;
-Propensity_to_Social_Distance=uniform(get_Main().Propensity_To_Social_Distance_Min, get_Main().Propensity_To_SocialDistance_Max);
 //}
 Reset_Will_Quarantine_Symptomatic();]]></Body>
 				</Function>
@@ -8761,11 +8953,26 @@ return Time_Asymptomatic;]]></Body>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[QU_Compliance = uniform(main.QUComplianceMin, main.QUComplianceMax);
-QS_Compliance = main.CentralTrackingEnabled ? 1.0 : uniform(main.QSComplianceMin, main.QSComplianceMax);
-CT_Compliance = uniform(main.CTComplianceMin, main.CTComplianceMax);
+QS_Compliance = main.CentralTrackingEnabled 
+	? 1.0 
+	: this instanceof Student 
+		? uniform(main.QSComplianceMin_Student, main.QSComplianceMax_Student)
+		: uniform(main.QSComplianceMin, main.QSComplianceMax);
+CT_Compliance = this instanceof Student
+	? uniform(main.CTComplianceMin_Student, main.CTComplianceMax_Student)
+	: uniform(main.CTComplianceMin, main.CTComplianceMax);
 SD_Compliance = uniform(main.SDComplianceMin, main.SDComplianceMax);
 Testing_Compliance = uniform(main.TestComplianceMin, main.TestComplianceMax);
-CT_Traced_Compliance = main.CentralTrackingEnabled ? 1.0 : uniform(main.CTTracedComplianceMin, main.CTTracedComplianceMax);]]></Body>
+CT_Traced_Compliance = main.CentralTrackingEnabled 
+	? 1.0 
+	: this instanceof Student 
+		? uniform(main.CTTracedComplianceMin_Student, main.CTTracedComplianceMax_Student)
+		: uniform(main.CTTracedComplianceMin, main.CTTracedComplianceMax);
+		
+
+Propensity_to_Social_Distance = this instanceof Student
+	? uniform(main.Propensity_To_Social_Distance_Min_Student, main.Propensity_To_SocialDistance_Max_Student)
+	: uniform(get_Main().Propensity_To_Social_Distance_Min, get_Main().Propensity_To_SocialDistance_Max);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -13437,6 +13644,30 @@ return priority;]]></Body>
 				<Parameter>
 					<ParameterName><![CDATA[sportEventInfectivity]]></ParameterName>
 				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[Propensity_To_Social_Distance_Min_Student]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[Propensity_To_SocialDistance_Max_Student]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[QSComplianceMin_Student]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[QSComplianceMax_Student]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[CTComplianceMin_Student]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[CTComplianceMax_Student]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[CTTracedComplianceMin_Student]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[CTTracedComplianceMax_Student]]></ParameterName>
+				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
@@ -13598,7 +13829,7 @@ dailyWriter.append("day,");
 
 List<String> headers = new ArrayList<>();
 	
-try (BufferedReader csvReader = new BufferedReader(new FileReader("TAU_parameter_samples_count_1000.csv"))) {
+try (BufferedReader csvReader = new BufferedReader(new FileReader("TAU_parameter_student_compliances_samples_count_510.csv"))) {
 	boolean first = true;
 	String row;
 	while ((row = csvReader.readLine()) != null) {
@@ -13619,7 +13850,7 @@ try (BufferedReader csvReader = new BufferedReader(new FileReader("TAU_parameter
 	    ExperimentsToRun.add(params);
 	}
 } catch (IOException e) {
-
+	traceln("IOException " + e.getMessage());
 }
 
 
@@ -13642,6 +13873,10 @@ writeHeaders(dailyWriter, headers, resultHeaders);]]></Body>
 					</Parameter>
 					<Body><![CDATA[//traceln(paramName);
 //traceln("Value="+ExperimentsToRun.get(getCurrentIteration() - 1).get(paramName));
+if (getCurrentIteration() - 1 >= ExperimentsToRun.size()) {
+	traceln("Index error @ Iteration " + getCurrentIteration());
+	return "0";
+}
 return ExperimentsToRun.get(getCurrentIteration() - 1).get(paramName);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -13891,7 +14126,7 @@ try {
 			<AfterExperimentCode><![CDATA[destroy();]]></AfterExperimentCode>
 			<AllowParallelEvaluations>true</AllowParallelEvaluations>
 			<UseFreeformParameters>true</UseFreeformParameters>
-			<NumberOfRuns>1</NumberOfRuns>
+			<NumberOfRuns>510</NumberOfRuns>
 			<FreeformParamValue>	
 				<Id>1169406678279</Id>
 			</FreeformParamValue>
@@ -13934,13 +14169,13 @@ try {
 			<FreeformParamValue>	
 				<Id>1587478210542</Id>
 				<Expression Class="CodeValue">
-					<Code><![CDATA[Double.valueOf(GetParam("social_distancing_min"))]]></Code>
+					<Code><![CDATA[0.65]]></Code>
 				</Expression>
 			</FreeformParamValue>
 			<FreeformParamValue>	
 				<Id>1587478228602</Id>
 				<Expression Class="CodeValue">
-					<Code><![CDATA[Double.valueOf(GetParam("social_distancing_max"))]]></Code>
+					<Code><![CDATA[0.9]]></Code>
 				</Expression>
 			</FreeformParamValue>
 			<FreeformParamValue>	
@@ -14078,25 +14313,25 @@ try {
 			<FreeformParamValue>	
 				<Id>1590175161976</Id>
 				<Expression Class="CodeValue">
-					<Code><![CDATA[Double.valueOf(GetParam("quarantine_compliance_min"))]]></Code>
+					<Code><![CDATA[0.65]]></Code>
 				</Expression>
 			</FreeformParamValue>
 			<FreeformParamValue>	
 				<Id>1590175170510</Id>
 				<Expression Class="CodeValue">
-					<Code><![CDATA[Double.valueOf(GetParam("quarantine_compliance_max"))]]></Code>
+					<Code><![CDATA[0.9]]></Code>
 				</Expression>
 			</FreeformParamValue>
 			<FreeformParamValue>	
 				<Id>1590175179989</Id>
 				<Expression Class="CodeValue">
-					<Code><![CDATA[Double.valueOf(GetParam("ct_compliance_min"))]]></Code>
+					<Code><![CDATA[0.65]]></Code>
 				</Expression>
 			</FreeformParamValue>
 			<FreeformParamValue>	
 				<Id>1590175191028</Id>
 				<Expression Class="CodeValue">
-					<Code><![CDATA[Double.valueOf(GetParam("ct_compliance_max"))]]></Code>
+					<Code><![CDATA[0.9]]></Code>
 				</Expression>
 			</FreeformParamValue>
 			<FreeformParamValue>	
@@ -14108,14 +14343,11 @@ try {
 			<FreeformParamValue>	
 				<Id>1590175232057</Id>
 				<Expression Class="CodeValue">
-					<Code><![CDATA[Double.valueOf(GetParam("test_compliance_min"))]]></Code>
+					<Code><![CDATA[1]]></Code>
 				</Expression>
 			</FreeformParamValue>
 			<FreeformParamValue>	
 				<Id>1590175241844</Id>
-				<Expression Class="CodeValue">
-					<Code><![CDATA[Double.valueOf(GetParam("test_compliance_max"))]]></Code>
-				</Expression>
 			</FreeformParamValue>
 			<FreeformParamValue>	
 				<Id>1590175274375</Id>
@@ -14134,9 +14366,6 @@ try {
 			</FreeformParamValue>
 			<FreeformParamValue>	
 				<Id>1591022386133</Id>
-				<Expression Class="CodeValue">
-					<Code><![CDATA[GetParam("uni_type").equals("LARGE")]]></Code>
-				</Expression>
 			</FreeformParamValue>
 			<FreeformParamValue>	
 				<Id>1591039533650</Id>
@@ -14165,13 +14394,13 @@ try {
 			<FreeformParamValue>	
 				<Id>1591119709738</Id>
 				<Expression Class="CodeValue">
-					<Code><![CDATA[Double.valueOf(GetParam("traced_compliance_min"))]]></Code>
+					<Code><![CDATA[0.65]]></Code>
 				</Expression>
 			</FreeformParamValue>
 			<FreeformParamValue>	
 				<Id>1591119709745</Id>
 				<Expression Class="CodeValue">
-					<Code><![CDATA[Double.valueOf(GetParam("traced_compliance_max"))]]></Code>
+					<Code><![CDATA[0.9]]></Code>
 				</Expression>
 			</FreeformParamValue>
 			<FreeformParamValue>	
@@ -14251,6 +14480,54 @@ try {
 			</FreeformParamValue>
 			<FreeformParamValue>	
 				<Id>1591213479492</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1593462044911</Id>
+				<Expression Class="CodeValue">
+					<Code><![CDATA[0.4]]></Code>
+				</Expression>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1593462044951</Id>
+				<Expression Class="CodeValue">
+					<Code><![CDATA[0.65]]></Code>
+				</Expression>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1593462044961</Id>
+				<Expression Class="CodeValue">
+					<Code><![CDATA[GetParam("forced_quarantine_high_compliance").equals("YES") ? 0.8 : 0.4]]></Code>
+				</Expression>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1593462044968</Id>
+				<Expression Class="CodeValue">
+					<Code><![CDATA[GetParam("forced_quarantine_high_compliance").equals("YES") ? 0.9 : 0.65]]></Code>
+				</Expression>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1593462044982</Id>
+				<Expression Class="CodeValue">
+					<Code><![CDATA[0.4]]></Code>
+				</Expression>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1593462044998</Id>
+				<Expression Class="CodeValue">
+					<Code><![CDATA[0.65]]></Code>
+				</Expression>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1593462045013</Id>
+				<Expression Class="CodeValue">
+					<Code><![CDATA[0.4]]></Code>
+				</Expression>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1593462045027</Id>
+				<Expression Class="CodeValue">
+					<Code><![CDATA[0.65]]></Code>
+				</Expression>
 			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1169406678279</Id>
@@ -14713,6 +14990,38 @@ try {
 				<Id>1591213479492</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1593462044911</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1593462044951</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1593462044961</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1593462044968</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1593462044982</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1593462044998</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1593462045013</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1593462045027</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
 			<ModelTimeProperties>
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
 				<InitialDate><![CDATA[1523906636000]]></InitialDate>	
@@ -14729,7 +15038,7 @@ try {
 			<ReplicationsProperties>
 				<UseReplication>true</UseReplication>
 				<FixedReplicationsNumber>true</FixedReplicationsNumber>
-				<ReplicationPerIteration>2</ReplicationPerIteration>
+				<ReplicationPerIteration>30</ReplicationPerIteration>
 				<MinimumReplication>2</MinimumReplication>
 				<MaximumReplication>10</MaximumReplication>
 				<ConfidenceLevel>LEVEL_80</ConfidenceLevel>
@@ -15026,7 +15335,7 @@ public class Course extends ConnectionOfAgents implements Serializable {
 			<Text><![CDATA[/**
  * Building
  */	
-public class Building extends sir_agent_based_networks_policy.ConnectionOfAgents implements Serializable {
+public class Building extends ConnectionOfAgents implements Serializable {
 
 	public List<Floor> floors = new ArrayList<>();
 	
@@ -15080,7 +15389,7 @@ public class Building extends sir_agent_based_networks_policy.ConnectionOfAgents
 			<Text><![CDATA[/**
  * Floor
  */	
-public class Floor extends sir_agent_based_networks_policy.ConnectionOfAgents implements Serializable {
+public class Floor extends ConnectionOfAgents implements Serializable {
 
 	public List<Suite> suites = new ArrayList<Suite>();
 	
@@ -15128,7 +15437,7 @@ public class Floor extends sir_agent_based_networks_policy.ConnectionOfAgents im
 			<Text><![CDATA[/**
  * Bathroom
  */	
-public class Bathroom extends sir_agent_based_networks_policy.ConnectionOfAgents implements Serializable {
+public class Bathroom extends ConnectionOfAgents implements Serializable {
 
 	public List<ConnectionOfAgents> usesBathroom = new ArrayList<ConnectionOfAgents>();
 	
@@ -15180,7 +15489,7 @@ public class Bathroom extends sir_agent_based_networks_policy.ConnectionOfAgents
 			<Text><![CDATA[/**
  * Suite
  */	
-public class Suite extends sir_agent_based_networks_policy.ConnectionOfAgents implements Serializable {
+public class Suite extends ConnectionOfAgents implements Serializable {
 
 	public final Floor floor;
 	public final Building building;
